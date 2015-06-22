@@ -1,0 +1,16 @@
+# Parameters
+/app/config/parameters.yml
+/app/config/parameters.ini
+
+# Managed by Composer
+/vendor/
+
+# Assets and user uploads
+/web/bundles/
+/web/uploads/
+
+# Composer PHAR
+/composer.phar
+
+# Mac
+.DS_Store

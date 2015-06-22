@@ -1,0 +1,11 @@
+#!/usr/bin/env php
+<?php
+
+require_once(__DIR__.'/../vendor/autoload.php');
+
+use Symfony\Component\Console\Application;
+
+$application = new Application('RAML cli toolkit', '1.0.0');
+$application->setCatchExceptions(false);
+$application->add(new \LinkORB\Skeleton\Command\ExampleCommand());
+$application->run();

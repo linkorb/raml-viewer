@@ -1,0 +1,29 @@
+{
+    "name": "linkorb/raml-server",
+    "description": "RAML Server",
+    "homepage": "https://github.com/linkorb/raml-server",
+    "keywords": ["RAML", "API", "JSON", "LinkORB"],
+    "type": "application",
+    "authors": [
+        {
+            "name": "LinkORB",
+            "email": "development@linkorb.com",
+            "role": "Development"
+        }
+    ],
+    "require": {
+        "silex/silex": "2.0.*@dev",
+        "symfony/yaml": "~2.6",
+        "symfony/config": "~2.6",
+        "symfony/security": "~2.6",
+        "symfony/console": "~2.6",
+        "twig/twig": "2.0.*@dev",
+        "userbase/client": "~0.0",
+        "alecsammon/php-raml-parser": "^1.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "RamlServer\\": "src/"
+        }
+    }
+}

@@ -1,0 +1,9 @@
+{
+	"users": {
+		"linkorb": {
+			"id": 1,
+			"username": "example",
+			"password": "secret"
+		}
+	}
+}

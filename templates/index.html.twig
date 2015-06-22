@@ -1,0 +1,54 @@
+{% extends "layout.html.twig" %}
+
+{% block content %}
+    <h1>{{ api.getTitle() }} <small>version {{ api.getVersion() }}</small></h1>
+    Baseurl: {{ api.getBaseUrl() }}<br />
+    Default mediatype: {{ api.getDefaultMediaType }}<br />
+    Protocols: 
+    {% for protocol in api.getProtocols() %}
+        {{ protocol }}
+    {% endfor %}
+    
+    
+    {% for route in api.getResourcesAsUri().getRoutes() %}
+        <h2>[{{ route.type }}] {{ route.path }}</h2>
+        <p><i>{{ route.method.description }}</i></p>
+        
+        <ul>
+        {% for param in route.method.getQueryParameters() %}
+            <li>
+                <code>{{ param.getKey() }}</code> {{ param.getDisplayName() }}
+                [{{ param.getType() }}]
+                <i>{{ param.getDescription }}</i>
+            </li>
+        {% endfor %}
+        </ul>
+    
+        <ul>
+        {% for body in route.method.getBodies() %}
+            <li>
+                Mediatype: <code>{{ body.mediaType }}</code><br />
+                <pre>{{ body.getSchema()|nl2br }}</pre>
+            </li>
+        {% endfor %}
+        </ul>
+
+        
+        {% for response in route.method.getResponses() %}
+            <h3>Response code {{ response.statusCode }}</h3>
+                <i>{{ response.getDescription() }}</i><br />
+                {% for body in response.getTypes() %}
+
+                    Mediatype: <code>{{ response.getBodyByType(body).mediaType }}</code><br />
+                    {% for example in response.getBodyByType(body).getExamples() %}
+                    Example:<br />
+                    <pre>{{ example }}</pre>
+                    {% endfor %}
+                {% endfor %}
+
+            
+        {% endfor %}
+        
+        <hr />
+    {% endfor %}
+{% endblock %}
